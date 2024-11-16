@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  orderservice:
+    build: ./src/Services/OrderService
+    ports:
+      - "5282:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - app-network
+
+  productservice:
+    build: ./src/Services/ProductService
+    ports:
+      - "5280:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - app-network
+
+  inventoryservice:
+    build: ./src/Services/inventoryservice
+    ports:
+      - "5280:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
